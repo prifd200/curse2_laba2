@@ -3,15 +3,15 @@ import numpy as np
 
 def factorial(n,oldfact):
     if oldfact !=1:
-        fact = oldfact * (2*n ) * (2*n - 1)
+        fact = oldfact * (2*n) * (2*n - 1)
     else:
         return 1
     return fact
 
 def algorithm(n, X,oldfact):
-    fact = 2 * n
-    currentfact = factorial(fact, oldfact)
-    det = np.linalg.det(np.linalg.matrix_power(X, (2 * n)))
+    fact = 2 * n + 1
+    currentfact = factorial(fact, oldfact)                                   # Вычисление факториала
+    det = np.linalg.det(np.linalg.matrix_power(X, (2 * n + 1)))              # Вычисляем определитель
     res = det/factorial(n, fact) * (-1)**n
     return res, currentfact
 
@@ -29,7 +29,7 @@ try:
         else:
             print("Ваше число не входит в данный диапазон")
     print(f"Ранг матрицы k = {k}, Точность вычислений t знаков = {t}\n")
-    X = np.random.randint(-10, 10, (k,k))
+    X = np.random.randint(-10, 10, (k,k))                                         # Задаём матрицу
     X = X / 10
     print(X)
     n = 1
